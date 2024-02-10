@@ -1,7 +1,7 @@
 public class MultiThreadExample {
 
     public static void main(String[] args) {
-        // Create the first thread for even numbers
+        // Creating the first thread for even numbers
         Thread evenThread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -17,7 +17,7 @@ public class MultiThreadExample {
             }
         });
 
-        // Create the second thread for odd numbers
+        // Creating the second thread for odd numbers
         Thread oddThread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -33,11 +33,11 @@ public class MultiThreadExample {
             }
         });
 
-        // Start both threads
+        // Starting both threads
         evenThread.start();
         oddThread.start();
 
-        // Wait for both threads to finish
+        // Waiting for both threads to finish
         try {
             evenThread.join();
             oddThread.join();
