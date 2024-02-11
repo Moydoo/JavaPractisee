@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-
+// Hej Mati, co tam słodziaku?
     private static final String DIRECTORY_PATH = "/Users/48518/OneDrive/Pulpit/JavaPractisee";
 
     public static void main(String[] args) {
@@ -13,7 +13,7 @@ public class Main {
         while (true) {
             System.out.println("\n1: Read a file\n2: Write into a file\n3: Delete the file\nAny other number: Exit");
             System.out.print("Enter your choice: ");
-            int choice = Integer.parseInt(inputData.nextLine()); // Use nextLine and parse to avoid issues
+            int choice = Integer.parseInt(inputData.nextLine()); // Parsing
 
             switch (choice) {
                 case 1:
