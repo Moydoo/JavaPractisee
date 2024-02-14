@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-// Hej Mati, co tam słodziaku?
+
     private static final String DIRECTORY_PATH = "/Users/48518/OneDrive/Pulpit/JavaPractisee";
 
     public static void main(String[] args) {
@@ -81,7 +81,7 @@ public class Main {
         String fileName = scanner.nextLine();
         File file = new File(DIRECTORY_PATH, fileName + ".txt");
 
-        if(file.delete()) {
+        if (file.delete()) {
             System.out.println("Deleted the file: " + file.getName());
         } else {
             System.out.println("Failed to delete the " + file.getName() + " file");
