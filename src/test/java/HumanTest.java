@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Test;
 
 class HumanTest {
 
@@ -31,5 +32,25 @@ class HumanTest {
 
     @org.junit.jupiter.api.Test
     void setCity() {
+    }
+
+    @Test
+    void getBalance() {
+    }
+
+    @Test
+    void setBalance() {
+    }
+
+    @Test
+    void addMoney() {
+    }
+
+    @Test
+    void withdrawMoney() {
+    }
+
+    @Test
+    void personIntroduction() {
     }
 }
