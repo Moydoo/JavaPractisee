@@ -1,16 +1,19 @@
+import java.math.BigDecimal;
+
 public class Human {
     private int age;
     private String name;
     private String surname;
     private String city;
 
-    private double balance = 0;
+    private BigDecimal balance;
 
-    public Human(String name, String surname,int age, String city) {
+    public Human(String name, String surname, int age, String city) {
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.city = city;
+        this.balance = BigDecimal.valueOf(0);
     }
 
 
@@ -46,33 +49,38 @@ public class Human {
         this.city = city;
     }
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(BigDecimal balance) {
+
         this.balance = balance;
     }
 
-    public void addMoney(double amount) {
-        this.balance += amount;
+    public void addMoney(BigDecimal amount) {
+        this.balance = balance.add(amount);
     }
 
-    public void withdrawMoney(double amount) {
-        if(amount > balance) {
+    public void withdrawMoney(BigDecimal amount) {
+        BigDecimal difference = balance.subtract(amount);
+        if (difference.doubleValue() < 0) {
             System.out.println("The balance of your account is: " + balance + "PLN.\n" +
                     "While you are trying to withdraw: " + amount + "PLN.\n" +
-                    "You cannot perform the action, as you would need to have " + Math.floor(balance*100 - amount*100)/100 + "PLN more.");
-        }
-        else {
-            balance = Math.floor(balance*100 - amount*100)/100;
+                    "You cannot perform the action, as you would need to have " + difference + "PLN more.");
+        } else {
+            balance = difference;
             System.out.println("You have withdrawn " + amount + "PLN and current balance of your account is: " + balance + "PLN.");
         }
     }
 
     public void personIntroduction() {
-        System.out.println("My name is: " + name + " " + surname +".\n" +
+        System.out.println("My name is: " + name + " " + surname + ".\n" +
                 "I am " + age + " years old and I live in " + city + ".\n" +
                 "Currently I have " + balance + "PLN amount of money.");
+    }
+
+    private double normalizeNumber(double input) {
+        return Math.floor((input * 100) / 100);
     }
 }
