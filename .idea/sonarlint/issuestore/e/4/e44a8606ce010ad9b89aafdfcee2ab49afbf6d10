@@ -1,0 +1,31 @@
+
+0
+java:S1220""Move this file to a named package.
+\
+java:S1075
+"ARefactor your code to get this URI from a customizable parameter.(´É¬ÿÿÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(Ï¾›şÿÿÿÿ
+@	java:S106-"+Replace this use of System.out by a logger.(Í®†
+@	java:S1062"+Replace this use of System.out by a logger.(ªóÀ§
+@	java:S1064"+Replace this use of System.out by a logger.(ŸË–á
+@	java:S1067"+Replace this use of System.out by a logger.(Îñïÿ
+E	java:S106<"+Replace this use of System.out by a logger.(¢€æãıÿÿÿÿ
+@	java:S106>"+Replace this use of System.out by a logger.(¦à¼Ä
+@	java:S106C"+Replace this use of System.out by a logger.(’ôÆà
+@	java:S106E"+Replace this use of System.out by a logger.(ÚàÕá
+E	java:S106N"+Replace this use of System.out by a logger.(şñƒÑÿÿÿÿÿ
+E	java:S106O"+Replace this use of System.out by a logger.(¥‚ÙÔşÿÿÿÿ
+@	java:S106Q"+Replace this use of System.out by a logger.(Ö çµ
+@	java:S106V"+Replace this use of System.out by a logger.(Çèˆ•
+i
+java:S4042Z"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(ë“«øÿÿÿÿ
+E	java:S106["+Replace this use of System.out by a logger.(öÿ°ûÿÿÿÿ
+@	java:S106]"+Replace this use of System.out by a logger.(Ğ¦Ú¨
+G
+java:S1144,"1Remove this unused private "readFromFile" method.(ÃäÊœ
+K
+java:S1144;"0Remove this unused private "writeToFile" method.(ûçõÄüÿÿÿÿ
+L
+java:S1144I"1Remove this unused private "listTxtFiles" method.(–âÇÔşÿÿÿÿ
+E
+java:S1144U"/Remove this unused private "deleteFile" method.(Ÿş¡¹

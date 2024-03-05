@@ -70,7 +70,7 @@ public class Human {
                     "You cannot perform the action, as you would need to have " + difference + "PLN more.");
         } else {
             balance = difference;
-            System.out.println("You have withdrawn " + amount + "PLN and current balance of your account is: " + balance + "PLN.");
+            System.out.println("You have withdrawn " + amount + "PLN and current balance of your account is: " + (balance) + "PLN.");
         }
     }
 

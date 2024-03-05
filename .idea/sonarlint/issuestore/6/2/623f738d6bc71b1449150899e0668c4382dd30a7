@@ -1,0 +1,8 @@
+
+7
+java:S1220""Move this file to a named package.8Š…¾‡á1
+L	java:S106D"+Replace this use of System.out by a logger.(³å˜¦ùÿÿÿÿ8ž…¾‡á1
+L	java:S106I"+Replace this use of System.out by a logger.(ëš¨úøÿÿÿÿ8ž…¾‡á1
+G	java:S106N"+Replace this use of System.out by a logger.(Ýü’î8ž…¾‡á1
+Q
+java:S1144S"4Remove this unused private "normalizeNumber" method.(®£ôà8Ÿ…¾‡á1
