@@ -1,159 +1,182 @@
-import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class HumanMain {
-    public static HashMap<String, Human> people = new HashMap<>();
+    private static final Map<String, Human> people = new HashMap<>();
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Scanner inputData = new Scanner(System.in);
-        print("Welcome in thee human creator!\n" +
-                "We are really happy that you are here!");
+        System.out.println("Welcome to the Human Creator! We are really happy that you are here!");
+        try {
+            mainMenu();
+        } finally {
+            scanner.close();
+        }
+    }
 
+    private static void mainMenu() {
         while (true) {
-            print("Chose what you want to achieve:\n" +
-                    "1: Show all people\n" +
-                    "2: Register\n" +
-                    "3: Select human\n" +
-                    "4: Make transaction");
-            print("Enter your choice: ");
-            int choice = 0;
+            System.out.println("""
+                    Choose what you want to achieve:
+                    1: Show all people
+                    2: Register
+                    3: Select human
+                    4: Make transaction
+                    5: Exit""");
             try {
-                choice = Integer.parseInt(inputData.nextLine());
-            } catch (Exception e) {
-                System.out.println("Jesteś debilem");
-            }
-
-
-            switch (choice) {
-                case 1:
-                    showPeople();
-                    break;
-                case 2:
-                    registerPerson(inputData);
-                    break;
-                case 3:
-                    selectHuman(inputData);
-                    break;
-                case 4:
-                    //make transaction
-                    break;
-                default:
-                    print("Exiting program");
-                    return;
+                int choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        showPeople();
+                        break;
+                    case 2:
+                        registerPerson();
+                        break;
+                    case 3:
+                        selectHuman();
+                        break;
+                    case 4:
+                        //Transaction
+                        break;
+                    case 5:
+                        System.out.println("Exiting program.");
+                        return;
+                    default:
+                        System.out.println("Invalid choice. Please select a number between 1 and 5.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number.");
             }
         }
-
     }
 
     private static void showPeople() {
-        if (!people.isEmpty()) {
-            System.out.println("Reggistered people people:");
-            for (String key : people.keySet()) {
-                System.out.println(key);
-            }
-            System.out.println("***************************************************");
+        if (people.isEmpty()) {
+            System.out.println("No registered people.");
         } else {
-            System.out.println("There are no registered people\n" +
-                    "***************************************************");
+            System.out.println("Registered people:");
+            people.forEach((name, human) -> System.out.println(name + " - " + human));
         }
+        System.out.println("***************************************************");
     }
 
-    private static void registerPerson(Scanner scanner) {
-        System.out.println("Enter name: ");
+    private static void registerPerson() {
+        System.out.println("Enter name:");
         String name = scanner.nextLine();
-        System.out.println("Enter surname: ");
+        System.out.println("Enter surname:");
         String surname = scanner.nextLine();
-
         String fullName = name + " " + surname;
 
-        if (!people.containsKey(fullName)) {
-            System.out.println("Enter age: ");
-            int age = scanner.nextInt();
-            scanner.nextLine();
+        if (people.containsKey(fullName)) {
+            System.out.println("A person with these credentials already exists!");
+            return;
+        }
 
-            System.out.println("Enter city: ");
+        try {
+            System.out.println("Enter age:");
+            int age = Integer.parseInt(scanner.nextLine());
+            System.out.println("Enter city:");
             String city = scanner.nextLine();
 
             Human newPerson = new Human(name, surname, age, city);
             people.put(fullName, newPerson);
             System.out.println(fullName + " has been registered.");
-        } else {
-            System.out.println("Person with those credentials already exists!\n" +
-                    "***************************************************");
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid age. Please enter a valid number.");
         }
     }
 
-    private static void selectHuman(Scanner scanner) {
-        BigDecimal money = new BigDecimal(0);
+    private static void selectHuman() {
+        if (people.isEmpty()) {
+            System.out.println("No people available to select.");
+            return;
+        }
 
-        System.out.println("What person would you like to choose?");
+        System.out.println("Choose a person by full name:");
         showPeople();
         String fullName = scanner.nextLine();
 
-        System.out.println("Choosen human is: " + fullName);
-        while (true) {
-            System.out.println("""
-                    What would you like to do?
-                    1: Show all information about human
-                    2: Update information about human
-                    3: Make the payment
-                    4: Delete the human
-                    ANY: Back to the queue""");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
-            Human person = people.get(fullName);
-            switch (choice) {
-                case 1:
-                    person.personIntroduction();
-                    break;
-                case 2:
-                    System.out.println("It will be soon implemented :)");
-                case 3:
-                    System.out.println("""
-                            Would you like to:
-                            (W) Withdraw money
-                            (D) Deposit money""");
-                    String moneyChoice = scanner.nextLine();
-                    if(moneyChoice.equals("W")) {
-                        System.out.println("How much would you like to withdraw?");
-                        money = scanner.nextBigDecimal();
-                        person.withdrawMoney(money);
-
-                    } else {
-                        System.out.println("How much would you like to deposit?");
-                        money = scanner.nextBigDecimal();
-                        person.addMoney(money);
-                    }
-                    break;
-                case 4:
-                    person = null;
-                    deleteHuman(fullName);
-
-                    break;
-                default:
-                    return;
-
-            }
+        Human selectedPerson = people.getOrDefault(fullName, null);
+        if (selectedPerson == null) {
+            System.out.println("Person not found.");
+            return;
         }
 
+        personMenu(fullName, selectedPerson);
+    }
 
+    private static void personMenu(String fullName, Human person) {
+        while (true) {
+            System.out.println("\nSelected Human: " + fullName);
+            System.out.println("1: Show details\n2: Edit details\n3: Make a transaction\n4: Delete person\n5: Return to main menu");
+            String choice = scanner.nextLine();
+            switch (choice) {
+                case "1":
+                    person.personIntroduction(); // Assuming Human.toString() method is overridden to display details.
+                    break;
+                case "2":
+                    editHuman(fullName,person);
+                    break;
+                case "3":
+                    makeTransaction(person);
+                    break;
+                case "4":
+                    deleteHuman(fullName);
+                    return; // Exit after deletion to prevent further actions on a deleted object.
+                case "5":
+                    return;
+                default:
+                    System.out.println("Invalid choice. Please select a valid option.");
+            }
+        }
+    }
+
+    private static void editHuman(String fullName, Human person) {
+        System.out.println("Editing details for: " + fullName);
+
+        // Prompt for new name and surname
+        System.out.println("Enter new name (current: " + person.getName() + "):");
+        String newName = scanner.nextLine();
+        System.out.println("Enter new surname (current: " + person.getSurname() + "):");
+        String newSurname = scanner.nextLine();
+
+        // Prompt for new age
+        System.out.println("Enter new age (current: " + person.getAge() + "):");
+        int newAge = Integer.parseInt(scanner.nextLine()); // Adding basic validation could improve this
+
+        // Prompt for new city
+        System.out.println("Enter new city (current: " + person.getCity() + "):");
+        String newCity = scanner.nextLine();
+
+        // Update the Human instance
+        person.setName(newName.trim().isEmpty() ? person.getName() : newName);
+        person.setSurname(newSurname.trim().isEmpty() ? person.getSurname() : newSurname);
+        person.setAge(newAge); // Assuming you have validation for age elsewhere
+        person.setCity(newCity.trim().isEmpty() ? person.getCity() : newCity);
+
+        String newFullName = person.getName() + " " + person.getSurname();
+
+        // If the full name has changed, update the map
+        if (!fullName.equals(newFullName)) {
+            people.remove(fullName);
+            people.put(newFullName, person);
+            System.out.println("Details updated. Note: Name changed, entry moved under new name.");
+        } else {
+            System.out.println("Details updated.");
+        }
+    }
+
+
+    private static void makeTransaction(Human person) {
+        // Implementation for making a transaction, such as adding or withdrawing money from the person's account.
+        // This could involve asking the user the amount and whether they want to add or withdraw, then updating the person's balance.
     }
 
     private static void deleteHuman(String fullName) {
         people.remove(fullName);
-        System.out.println("The " + fullName + " was deleted.");
+        System.out.println(fullName + " has been deleted from the registry.");
     }
 
-    private static void print(String input) {
-        System.out.println(input);
-    }
-
-    private static void print(int input) {
-        System.out.println(input);
-    }
-
-    private static void print(boolean input) {
-        System.out.println(input);
-    }
+    // Placeholder for other methods...
 }

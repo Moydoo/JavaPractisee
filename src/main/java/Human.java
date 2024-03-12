@@ -80,7 +80,4 @@ public class Human {
                 "Currently I have " + balance + "PLN amount of money.");
     }
 
-    private double normalizeNumber(double input) {
-        return Math.floor((input * 100) / 100);
-    }
 }
