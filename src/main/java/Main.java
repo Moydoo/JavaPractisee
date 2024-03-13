@@ -39,6 +39,10 @@ public class Main {
         person1.addMoney(BigDecimal.valueOf(1500.32));
         person1.personIntroduction();
         person1.withdrawMoney(BigDecimal.valueOf(1300));
+
+        BigDecimal amount = new BigDecimal(1000);
+
+        System.out.println(BigDecimal.ZERO);
     }
 
     private static void readFromFile(Scanner scanner) {

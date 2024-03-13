@@ -1,31 +1,36 @@
 
-0
-java:S1220""Move this file to a named package.
-\
+]
+java:S1220""Move this file to a named package.8 –Ø¿ã1J$8a0c95fb-ed7d-46ff-8521-29dab5b7f182
+‰
 java:S1075
-"ARefactor your code to get this URI from a customizable parameter.(´É¬ÿÿÿÿÿÿ
-V	java:S125"<This block of commented-out lines of code should be removed.(Ï¾›şÿÿÿÿ
-@	java:S106-"+Replace this use of System.out by a logger.(Í®†
-@	java:S1062"+Replace this use of System.out by a logger.(ªóÀ§
-@	java:S1064"+Replace this use of System.out by a logger.(ŸË–á
-@	java:S1067"+Replace this use of System.out by a logger.(Îñïÿ
-E	java:S106<"+Replace this use of System.out by a logger.(¢€æãıÿÿÿÿ
-@	java:S106>"+Replace this use of System.out by a logger.(¦à¼Ä
-@	java:S106C"+Replace this use of System.out by a logger.(’ôÆà
-@	java:S106E"+Replace this use of System.out by a logger.(ÚàÕá
-E	java:S106N"+Replace this use of System.out by a logger.(şñƒÑÿÿÿÿÿ
-E	java:S106O"+Replace this use of System.out by a logger.(¥‚ÙÔşÿÿÿÿ
-@	java:S106Q"+Replace this use of System.out by a logger.(Ö çµ
-@	java:S106V"+Replace this use of System.out by a logger.(Çèˆ•
-i
-java:S4042Z"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(ë“«øÿÿÿÿ
-E	java:S106["+Replace this use of System.out by a logger.(öÿ°ûÿÿÿÿ
-@	java:S106]"+Replace this use of System.out by a logger.(Ğ¦Ú¨
-G
-java:S1144,"1Remove this unused private "readFromFile" method.(ÃäÊœ
-K
-java:S1144;"0Remove this unused private "writeToFile" method.(ûçõÄüÿÿÿÿ
-L
-java:S1144I"1Remove this unused private "listTxtFiles" method.(–âÇÔşÿÿÿÿ
-E
-java:S1144U"/Remove this unused private "deleteFile" method.(Ÿş¡¹
+"ARefactor your code to get this URI from a customizable parameter.(´É¬ÿÿÿÿÿÿ8¬–Ø¿ã1J$29d98acb-8fc2-4750-8e18-b1e9d3346b02
+}
+java:S1854+":Remove this useless assignment to local variable "amount".(‡Êˆ8½€Û¿ã1J$5a121146-d1a7-4f1b-8dfa-0d4f687cb46d
+ƒ	java:S125"<This block of commented-out lines of code should be removed.(Ï¾›şÿÿÿÿ8¯–Ø¿ã1J$39d8706d-9ac5-4b43-bda6-13821010c431
+n
+java:S1481+"+Remove this unused "amount" local variable.(‡Êˆ8Ä€Û¿ã1J$d69448f9-3d67-43ee-afd0-aad0a4aaf134
+r	java:S106-"+Replace this use of System.out by a logger.(÷¦úÎøÿÿÿÿ8´–Ø¿ã1J$8c32b9a0-b730-4db8-a65d-c11c4fe186b2
+m	java:S1061"+Replace this use of System.out by a logger.(Í®†8µ–Ø¿ã1J$47c60a1a-cf6c-434c-a9a4-437ebf585142
+m	java:S1066"+Replace this use of System.out by a logger.(ªóÀ§8º–Ø¿ã1J$99288216-ce41-409a-94eb-f9a99fcc21f0
+m	java:S1068"+Replace this use of System.out by a logger.(ŸË–á8»–Ø¿ã1J$3b739cae-42b4-46f5-92c2-c583ff64008f
+m	java:S106;"+Replace this use of System.out by a logger.(Îñïÿ8»–Ø¿ã1J$a20c8e36-5112-4432-964c-3e0b850ca039
+r	java:S106@"+Replace this use of System.out by a logger.(¢€æãıÿÿÿÿ8¼–Ø¿ã1J$a5c6637e-99d0-4c24-805d-55acf4718eb0
+m	java:S106B"+Replace this use of System.out by a logger.(¦à¼Ä8¼–Ø¿ã1J$057ed5fa-903a-4927-8207-6905ce6a87f0
+m	java:S106G"+Replace this use of System.out by a logger.(’ôÆà8¾–Ø¿ã1J$a8e79613-5a6d-4a7f-89f2-ddc900079f63
+m	java:S106I"+Replace this use of System.out by a logger.(ÚàÕá8¾–Ø¿ã1J$5fec2994-1045-4fc9-b42d-33eb6254e76d
+r	java:S106R"+Replace this use of System.out by a logger.(şñƒÑÿÿÿÿÿ8À–Ø¿ã1J$5fce5644-c54f-48e2-9586-29b7611ef6ee
+r	java:S106S"+Replace this use of System.out by a logger.(¥‚ÙÔşÿÿÿÿ8Á–Ø¿ã1J$83e77af8-3dfd-4e0f-b3c1-e1704deecbfb
+m	java:S106U"+Replace this use of System.out by a logger.(Ö çµ8Á–Ø¿ã1J$11dad4e3-bae5-4f77-aaa0-d6119206ec4e
+m	java:S106Z"+Replace this use of System.out by a logger.(Çèˆ•8Â–Ø¿ã1J$39d79a39-fd61-48a4-9436-e1a6f97a6c25
+–
+java:S4042^"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(ë“«øÿÿÿÿ8Ä–Ø¿ã1J$a943790d-dc11-4afb-a4ee-f9c4b9597c8a
+r	java:S106_"+Replace this use of System.out by a logger.(öÿ°ûÿÿÿÿ8Ä–Ø¿ã1J$56bde934-93a7-44be-9590-9ae18a173613
+m	java:S106a"+Replace this use of System.out by a logger.(Ğ¦Ú¨8Å–Ø¿ã1J$765cc3d6-1917-417e-af81-551e8412b4c1
+t
+java:S11440"1Remove this unused private "readFromFile" method.(ÃäÊœ8Æ–Ø¿ã1J$c3862b66-8e19-4a60-a92f-3ca5ecb44d67
+x
+java:S1144?"0Remove this unused private "writeToFile" method.(ûçõÄüÿÿÿÿ8Æ–Ø¿ã1J$f862d638-271c-415d-994d-2331fd5793d8
+y
+java:S1144M"1Remove this unused private "listTxtFiles" method.(–âÇÔşÿÿÿÿ8Æ–Ø¿ã1J$a7d4b82a-9ed2-427b-912c-ff719c859d03
+r
+java:S1144Y"/Remove this unused private "deleteFile" method.(Ÿş¡¹8Æ–Ø¿ã1J$41e3d5f6-34e6-4681-ac7c-264b760f5ca6

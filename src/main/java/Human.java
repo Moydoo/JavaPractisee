@@ -60,6 +60,7 @@ public class Human {
 
     public void addMoney(BigDecimal amount) {
         this.balance = balance.add(amount);
+        System.out.println("You have deposited " + amount + "PLN");
     }
 
     public void withdrawMoney(BigDecimal amount) {

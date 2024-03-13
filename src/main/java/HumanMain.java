@@ -1,4 +1,6 @@
+import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -22,8 +24,7 @@ public class HumanMain {
                     1: Show all people
                     2: Register
                     3: Select human
-                    4: Make transaction
-                    5: Exit""");
+                    4: Exit""");
             try {
                 int choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
@@ -37,9 +38,6 @@ public class HumanMain {
                         selectHuman();
                         break;
                     case 4:
-                        //Transaction
-                        break;
-                    case 5:
                         System.out.println("Exiting program.");
                         return;
                     default:
@@ -116,11 +114,11 @@ public class HumanMain {
                     person.personIntroduction(); // Assuming Human.toString() method is overridden to display details.
                     break;
                 case "2":
-                    editHuman(fullName,person);
+                    editHuman(fullName, person);
                     fullName = person.getName() + " " + person.getSurname();
                     break;
                 case "3":
-                    makeTransaction(person);
+                    makeTransaction(person, scanner);
                     break;
                 case "4":
                     deleteHuman(fullName);
@@ -153,7 +151,7 @@ public class HumanMain {
         // Update the Human instance
         person.setName(newName.trim().isEmpty() ? person.getName() : newName);
         person.setSurname(newSurname.trim().isEmpty() ? person.getSurname() : newSurname);
-        person.setAge(newAge); // Assuming you have validation for age elsewhere
+        person.setAge(newAge);
         person.setCity(newCity.trim().isEmpty() ? person.getCity() : newCity);
 
         String newFullName = person.getName() + " " + person.getSurname();
@@ -169,9 +167,54 @@ public class HumanMain {
     }
 
 
-    private static void makeTransaction(Human person) {
-        // Implementation for making a transaction, such as adding or withdrawing money from the person's account.
-        // This could involve asking the user the amount and whether they want to add or withdraw, then updating the person's balance.
+    private static void makeTransaction(Human person, Scanner scanner) {
+        boolean continueTransaction = true;
+
+        while (continueTransaction) {
+            System.out.println("""
+                    Would you like to (W) Withdraw the money
+                    Would you like to (D) Deposit the money?
+                    Type 'E' to exit.
+                    """);
+            String selectedValue = scanner.nextLine().trim().toUpperCase();
+
+            try {
+                BigDecimal value;
+                switch (selectedValue) {
+                    case "W":
+                        System.out.println("How much would you like to withdraw?");
+                        value = scanner.nextBigDecimal();
+                        scanner.nextLine();
+                        if (value.compareTo(BigDecimal.ZERO) > 0) {
+                            person.withdrawMoney(value);
+                        } else {
+                            System.out.println("Please enter a positive amount.");
+                        }
+                        break;
+                    case "D":
+                        System.out.println("How much would you like to deposit?");
+                        value = scanner.nextBigDecimal();
+                        scanner.nextLine();
+                        if (value.compareTo(BigDecimal.ZERO) > 0) {
+                            person.addMoney(value);
+                        } else {
+                            System.out.println("Please enter a positive amount.");
+                        }
+                        break;
+                    case "E":
+                        continueTransaction = false;
+                        break;
+                    default:
+                        System.out.println("Inputed value is not correct. Please enter W, D, or E.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+                scanner.nextLine();
+            } catch (Exception e) {
+                System.out.println("An error occurred: " + e.getMessage());
+                scanner.nextLine();
+            }
+        }
     }
 
     private static void deleteHuman(String fullName) {
