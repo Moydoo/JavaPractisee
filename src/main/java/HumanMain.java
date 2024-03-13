@@ -36,7 +36,7 @@ public class HumanMain {
                     3: Select human
                     4: Exit""");
             try {
-                int choice = Integer.parseInt(scanner.nextLine());
+                int choice = scanner.nextInt();
                 switch (choice) {
                     case 1:
                         showPeople();
@@ -63,10 +63,10 @@ public class HumanMain {
         if (people.isEmpty()) {
             System.out.println("No registered people.");
         } else {
-            System.out.println("Registered people:");
+            System.out.println("__________Registered people:__________");
             people.forEach((name, human) -> System.out.println(name));
         }
-        System.out.println("***************************************************");
+        System.out.println("________________________________________");
     }
 
     private static void registerPerson() {
@@ -83,7 +83,9 @@ public class HumanMain {
 
         try {
             System.out.println("Enter age:");
-            int age = Integer.parseInt(scanner.nextLine());
+            int age = scanner.nextInt();
+            scanner.nextLine();
+
             System.out.println("Enter city:");
             String city = scanner.nextLine();
 
@@ -121,7 +123,7 @@ public class HumanMain {
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1":
-                    person.personIntroduction(); // Assuming Human.toString() method is overridden to display details.
+                    person.personIntroduction();
                     break;
                 case "2":
                     editHuman(fullName, person);
@@ -132,7 +134,7 @@ public class HumanMain {
                     break;
                 case "4":
                     deleteHuman(fullName);
-                    return; // Exit after deletion to prevent further actions on a deleted object.
+                    return;
                 case "5":
                     return;
                 default:
@@ -254,5 +256,4 @@ public class HumanMain {
         System.out.println(fullName + " has been deleted from the registry.");
     }
 
-    // Placeholder for other methods...
 }
