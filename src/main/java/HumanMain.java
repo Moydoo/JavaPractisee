@@ -56,7 +56,7 @@ public class HumanMain {
             System.out.println("No registered people.");
         } else {
             System.out.println("Registered people:");
-            people.forEach((name, human) -> System.out.println(name + " - " + human));
+            people.forEach((name, human) -> System.out.println(name));
         }
         System.out.println("***************************************************");
     }
@@ -117,6 +117,7 @@ public class HumanMain {
                     break;
                 case "2":
                     editHuman(fullName,person);
+                    fullName = person.getName() + " " + person.getSurname();
                     break;
                 case "3":
                     makeTransaction(person);
