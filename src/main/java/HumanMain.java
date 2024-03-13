@@ -9,6 +9,16 @@ public class HumanMain {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        //Fixture data:
+        people.put("John Doe", new Human("John", "Doe", 30, "New York", BigDecimal.valueOf(100.0)));
+        people.put("Jane Doe", new Human("Jane", "Doe", 28, "Los Angeles", BigDecimal.valueOf(150.0)));
+        people.put("Michael Smith", new Human("Michael", "Smith", 35, "Chicago", BigDecimal.valueOf(200.0)));
+        people.put("Maria Garcia", new Human("Maria", "Garcia", 32, "Miami", BigDecimal.valueOf(250.0)));
+        people.put("James Johnson", new Human("James", "Johnson", 40, "Dallas", BigDecimal.valueOf(300.0)));
+        people.put("Linda Brown", new Human("Linda", "Brown", 29, "Philadelphia", BigDecimal.valueOf(350.0)));
+        people.put("Robert Davis", new Human("Robert", "Davis", 45, "Houston", BigDecimal.valueOf(400.0)));
+        people.put("Patricia Miller", new Human("Patricia", "Miller", 27, "Atlanta", BigDecimal.valueOf(450.0)));
+
         System.out.println("Welcome to the Human Creator! We are really happy that you are here!");
         try {
             mainMenu();
@@ -174,6 +184,7 @@ public class HumanMain {
             System.out.println("""
                     Would you like to (W) Withdraw the money
                     Would you like to (D) Deposit the money?
+                    Would you like to (T) Transfer money to somebody?
                     Type 'E' to exit.
                     """);
             String selectedValue = scanner.nextLine().trim().toUpperCase();
@@ -197,9 +208,30 @@ public class HumanMain {
                         scanner.nextLine();
                         if (value.compareTo(BigDecimal.ZERO) > 0) {
                             person.addMoney(value);
+                            System.out.println("You have deposited " + value + "PLN");
                         } else {
                             System.out.println("Please enter a positive amount.");
                         }
+                        break;
+                    case "T":
+                        System.out.println("To who would you like to transfer your money?");
+                        showPeople();
+                        String fullName = scanner.nextLine();
+
+                        Human selectedPerson = people.getOrDefault(fullName, null);
+                        if (selectedPerson == null) {
+                            System.out.println("Person not found.");
+                            return;
+                        }
+                        System.out.println("How much would you like to transfer?");
+                        value = scanner.nextBigDecimal();
+                        scanner.nextLine();
+                        if (value.compareTo(BigDecimal.ZERO) > 0) {
+                            person.transferMoney(selectedPerson, value);
+                        } else {
+                            System.out.println("Please enter a positive amount.");
+                        }
+
                         break;
                     case "E":
                         continueTransaction = false;

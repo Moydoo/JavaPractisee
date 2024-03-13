@@ -16,6 +16,14 @@ public class Human {
         this.balance = BigDecimal.valueOf(0);
     }
 
+    public Human(String name, String surname, int age, String city, BigDecimal balance) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.city = city;
+        this.balance = balance;
+    }
+
 
     public int getAge() {
         return age;
@@ -60,7 +68,6 @@ public class Human {
 
     public void addMoney(BigDecimal amount) {
         this.balance = balance.add(amount);
-        System.out.println("You have deposited " + amount + "PLN");
     }
 
     public void withdrawMoney(BigDecimal amount) {
@@ -80,5 +87,18 @@ public class Human {
                 "I am " + age + " years old and I live in " + city + ".\n" +
                 "Currently I have " + balance + "PLN amount of money.");
     }
+
+    public void transferMoney(Human recipient, BigDecimal amount) {
+        if (this.balance.compareTo(amount) >= 0 && recipient != null && amount.compareTo(BigDecimal.ZERO) > 0) {
+            this.balance = this.balance.subtract(amount); // Subtract the amount from the sender's balance
+            recipient.addMoney(amount); // Add the amount to the recipient's balance
+            System.out.println("Transferred " + amount + "PLN to " + recipient.getName() + " " + recipient.getSurname() + ". Your current balance is: " + this.balance + "PLN.");
+        } else if (amount.compareTo(BigDecimal.ZERO) <= 0) {
+            System.out.println("The amount to transfer must be greater than 0 PLN.");
+        } else {
+            System.out.println("Insufficient funds for the transfer. Your balance is " + this.balance + "PLN, and you attempted to transfer " + amount + "PLN.");
+        }
+    }
+
 
 }
